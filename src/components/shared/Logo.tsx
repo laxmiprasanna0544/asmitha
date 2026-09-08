@@ -42,39 +42,8 @@ export const Logo: React.FC<LogoProps> = ({
         3. Tagline: "India's Gateway to Student Opportunities"
       */}
       <div className="flex items-center gap-3">
-        {/* Vector SVG Emblem: Navy "P" + Gold Graduation Cap */}
         <div className={`relative ${iconSizes[size]} flex items-center justify-center shrink-0`}>
-          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full drop-shadow-xs">
-            {/* Graduation Cap - Golden Yellow Roof */}
-            <path 
-              d="M15 38 L50 20 L85 38 L50 56 Z" 
-              fill="#D49B27" 
-            />
-            {/* Graduation Cap Underside Shadow */}
-            <path 
-              d="M32 47 L50 56 L68 47 L50 40 Z" 
-              fill="#B27E1A" 
-            />
-            {/* Hanging Tassel - Left side */}
-            <path 
-              d="M20 40 L20 54" 
-              stroke="#D49B27" 
-              strokeWidth="2.5" 
-              strokeLinecap="round" 
-            />
-            <circle cx="20" cy="56" r="3" fill="#D49B27" />
-
-            {/* Letter 'P' Body - Deep Navy Blue */}
-            <path 
-              d="M32 38 V88 H46 V62 H62 C74 62 82 54 82 43 C82 32 74 24 62 24 H44" 
-              fill={isLight ? '#FFFFFF' : '#081E3D'} 
-            />
-            {/* Letter 'P' Inner Counter cutout */}
-            <path 
-              d="M46 36 H60 C66 36 70 39 70 43 C70 47 66 50 60 50 H46 V36 Z" 
-              fill={isLight ? '#0A1428' : '#FFFFFF'} 
-            />
-          </svg>
+          <img src="/logo.png" alt="PehlaChance Logo" className="w-full h-full object-contain" />
         </div>
 
         {/* Text Portion */}
