@@ -33,22 +33,22 @@ export default function CompaniesLandingPage() {
           {/* Hero */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7 space-y-6">
-              <span className="text-xs font-bold uppercase tracking-wider text-amber-600 bg-amber-50 px-3.5 py-1.5 rounded-full border border-amber-200">
-                For Startups, SMEs & Corporate Employers
+              <span className="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-3.5 py-1.5 rounded-full border border-blue-200">
+                For Companies
               </span>
               
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0A1428] tracking-tight leading-tight">
-                Meet the Next Generation <br />
-                <span className="gold-gradient-text">of Verified Talent.</span>
+                Find Talent Before <br />
+                <span className="gold-gradient-text">Everyone Else Does.</span>
               </h1>
 
               <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
-                Hiring interns and fresh graduates shouldn’t mean sorting through endless irrelevant applications. PehlaChance connects you with ambitious candidates whose skills and project code are provably verified.
+                "Your Next Great Hire May Be Someone Looking for Their First Chance." Fast-growing teams need raw potential, authentic communication, and genuine curiosity. Watch candidate video introductions, evaluate code proof, and build your future workforce today.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-2">
                 <Link
-                  href="/companies/post-opportunity"
+                  href="/register?role=company"
                   className="bg-[#0A1428] hover:bg-[#0F1D38] text-white px-7 py-3.5 rounded-xl font-bold text-sm shadow-md transition flex items-center justify-center gap-2 border border-slate-800"
                 >
                   <span>Post an Opportunity</span>
@@ -59,7 +59,7 @@ export default function CompaniesLandingPage() {
                   href="/companies/find-talent"
                   className="bg-white hover:bg-slate-50 text-slate-900 px-7 py-3.5 rounded-xl font-bold text-sm border border-slate-300 transition text-center"
                 >
-                  Find Talent Directory
+                  Discover Talent
                 </Link>
               </div>
             </div>

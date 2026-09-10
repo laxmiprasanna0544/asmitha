@@ -25,12 +25,11 @@ export const Navbar: React.FC = () => {
   }, []);
 
   const navLinks = [
-    { label: 'Find Internships', href: '/internships' },
+    { label: 'Home', href: '/' },
     { label: 'For Students', href: '/students' },
     { label: 'For Companies', href: '/companies' },
     { label: 'For Colleges', href: '/colleges' },
     { label: 'Opportunities', href: '/opportunities' },
-    { label: 'Career Resources', href: '/resources' },
     { label: 'About Us', href: '/about' },
   ];
 
@@ -85,7 +84,7 @@ export const Navbar: React.FC = () => {
                 href="/register"
                 className="text-xs font-bold bg-[#0A1428] hover:bg-[#0F1D38] text-white px-4 py-2 rounded-lg shadow-sm hover:shadow transition-all duration-200 flex items-center gap-1.5 border border-slate-700/40"
               >
-                <span>Get Started</span>
+                <span>Join PehlaChance</span>
                 <ChevronRight className="w-3.5 h-3.5 text-amber-400" />
               </Link>
             </div>

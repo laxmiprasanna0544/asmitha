@@ -18,6 +18,8 @@ export const metadata: Metadata = {
   description: "India’s Early-Career Opportunity Ecosystem. Connect students, colleges, and companies through verified opportunities, professional identity, and career technology.",
 };
 
+import { AuthProvider } from "@/context/AuthContext";
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
@@ -25,10 +27,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col relative bg-slate-50 text-slate-900 overflow-x-hidden">
-        <AmbientBackground />
-        <div className="relative z-10 flex flex-col min-h-screen">
-          {children}
-        </div>
+        <AuthProvider>
+          <AmbientBackground />
+          <div className="relative z-10 flex flex-col min-h-screen">
+            {children}
+          </div>
+        </AuthProvider>
       </body>
     </html>
   );

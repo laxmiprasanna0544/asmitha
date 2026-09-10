@@ -25,31 +25,31 @@ export default function StudentsLandingPage() {
           {/* Hero */}
           <div className="text-center max-w-3xl mx-auto space-y-4">
             <span className="text-xs font-bold uppercase tracking-wider text-amber-600 bg-amber-50 px-3.5 py-1.5 rounded-full border border-amber-200">
-              For Ambitious Students & Fresh Graduates
+              For Students
             </span>
             
             <h1 className="text-4xl sm:text-6xl font-extrabold text-[#0A1428] tracking-tight">
-              Find Your First <br />
-              <span className="gold-gradient-text">Real Opportunity.</span>
+              Your First Professional <br />
+              <span className="gold-gradient-text">Identity Starts Here.</span>
             </h1>
 
             <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
-              Stop sending hundreds of cold emails with empty resumes. PehlaChance helps you build provable project credentials and connects you directly with companies ready to give you your first chance.
+              Every student has potential, but traditional resumes don't fully represent you. PehlaChance helps you build a multidimensional profile, showcase your skills through 60-second video introductions, and discover verified early-career opportunities.
             </p>
 
             <div className="flex justify-center gap-4 pt-4">
               <Link
-                href="/opportunities"
+                href="/register?role=student"
                 className="bg-[#0A1428] hover:bg-[#0F1D38] text-white px-7 py-3.5 rounded-xl font-bold text-sm shadow flex items-center gap-2 border border-slate-800"
               >
-                <span>Find Opportunities</span>
+                <span>Create Your Profile</span>
                 <ArrowRight className="w-4 h-4 text-amber-400" />
               </Link>
               <Link
-                href="/resume-builder"
+                href="/opportunities"
                 className="bg-white hover:bg-slate-50 text-slate-900 px-7 py-3.5 rounded-xl font-bold text-sm border border-slate-300 transition"
               >
-                AI Resume Builder
+                Explore Opportunities
               </Link>
             </div>
           </div>

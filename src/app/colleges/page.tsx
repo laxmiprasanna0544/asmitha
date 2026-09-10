@@ -17,25 +17,25 @@ export default function CollegesLandingPage() {
           {/* Hero */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-7 space-y-6">
-              <span className="text-xs font-bold uppercase tracking-wider text-amber-600 bg-amber-50 px-3.5 py-1.5 rounded-full border border-amber-200">
-                For Higher Education Institutions
+              <span className="text-xs font-bold uppercase tracking-wider text-emerald-600 bg-emerald-50 px-3.5 py-1.5 rounded-full border border-emerald-200">
+                For Colleges
               </span>
               
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#0A1428] tracking-tight leading-tight">
-                Build a Career-Ready <br />
-                <span className="gold-gradient-text">Campus Ecosystem.</span>
+                Connecting Your Students <br />
+                <span className="gold-gradient-text">With the World Beyond Campus.</span>
               </h1>
 
               <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
-                PehlaChance does not replace the placement cell. It digitizes, automates, and strengthens the placement ecosystem for TPOs, department heads, and students across all academic branches.
+                Empower your students to showcase their real potential. PehlaChance partners with institutions across India to bridge classroom education with industry hiring, offering automated AI resume builders, video readiness, and department-level placement analytics.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-2">
                 <Link
-                  href="/colleges/career-ready-campus"
+                  href="/register?role=college"
                   className="bg-[#0A1428] hover:bg-[#0F1D38] text-white px-7 py-3.5 rounded-xl font-bold text-sm shadow-md transition flex items-center justify-center gap-2 border border-slate-800"
                 >
-                  <span>Explore Transformation Program</span>
+                  <span>Partner With PehlaChance</span>
                   <ArrowRight className="w-4 h-4 text-amber-400" />
                 </Link>
 

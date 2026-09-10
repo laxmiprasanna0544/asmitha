@@ -15,19 +15,22 @@ export interface Opportunity {
   companyLogo: string;
   verified: boolean;
   type: OpportunityType;
-  category: 'Technology' | 'Marketing' | 'Finance' | 'Design' | 'Data & AI';
+  category?: 'Technology' | 'Marketing' | 'Finance' | 'Design' | 'Data & AI' | string;
+  industry?: string;
   location: string;
   workMode: WorkMode;
   stipend: string;
   duration: string;
-  experienceLevel: 'Beginner' | 'Intermediate' | 'No Prior Experience Required';
+  experienceLevel: string;
   skills: string[];
   postedDate: string;
+  deadline?: string;
   description: string;
   responsibilities: string[];
   requirements: string[];
   perks: string[];
   applicantsCount: number;
+  matchScore?: number;
 }
 
 export interface Candidate {

@@ -16,14 +16,17 @@ export default function AboutPage() {
           
           {/* Header */}
           <div className="max-w-3xl mx-auto text-center space-y-4">
-            <span className="text-xs font-bold uppercase tracking-wider text-amber-600 bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
-              Our Mission & Philosophy
+            <span className="text-xs font-bold uppercase tracking-wider text-amber-600 bg-amber-50 px-3.5 py-1 rounded-full border border-amber-200">
+              Our Mission & Purpose
             </span>
             <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0A1428] tracking-tight">
-              We Believe Everyone Deserves a First Chance.
+              Why PehlaChance Exists.
             </h1>
-            <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
-              Talent is everywhere, but opportunity isn't always distributed equally. PehlaChance is building the digital infrastructure around the very first step in a career.
+            <p className="text-slate-700 text-base sm:text-lg leading-relaxed font-semibold">
+              "A student's potential should not be ignored simply because they haven't been given an opportunity yet."
+            </p>
+            <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
+              Everyone needs a beginning. PehlaChance is India's Video-First, AI-Powered Early Career Talent Network — built to ensure that a lack of prior experience never stands in the way of genuine opportunity.
             </p>
           </div>
 

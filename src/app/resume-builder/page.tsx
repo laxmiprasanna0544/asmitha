@@ -57,10 +57,30 @@ export default function ResumeBuilderPage() {
     }
   ]);
 
+  const [experience, setExperience] = useState([
+    {
+      role: 'Frontend Engineering Intern',
+      company: 'NeoTech Labs',
+      duration: 'May 2025 - Jul 2025',
+      description: 'Built responsive dashboard views using Next.js and Tailwind CSS, reducing page load latency by 25%.'
+    }
+  ]);
+
+  const [certifications, setCertifications] = useState([
+    'AWS Certified Cloud Practitioner (2025)',
+    'Meta Front-End Developer Professional Certificate'
+  ]);
+
+  const [achievements, setAchievements] = useState([
+    'Winner, Smart India Hackathon (Campus Level, 2025)',
+    'Ranked in top 5% across LeetCode Biweekly Contests (Rating: 1840)'
+  ]);
+
+  const [newSkill, setNewSkill] = useState('');
+
   // Controls State
   const [activeTemplate, setActiveTemplate] = useState<'modern' | 'minimal' | 'executive'>('modern');
   const [activeFont, setActiveFont] = useState<'sans' | 'mono' | 'serif'>('sans');
-  const [activeSpacing, setActiveSpacing] = useState<'compact' | 'normal' | 'spacious'>('normal');
   const [aiEnhanced, setAiEnhanced] = useState(false);
   const [downloading, setDownloading] = useState(false);
 
@@ -86,19 +106,29 @@ export default function ResumeBuilderPage() {
     setDownloading(true);
     setTimeout(() => {
       setDownloading(false);
-      alert('Your ATS-optimized PDF Resume has been simulated and saved!');
-    }, 1200);
+      window.print();
+    }, 400);
+  };
+
+  const handleAddSkill = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (newSkill.trim() && !skills.includes(newSkill.trim())) {
+      setSkills([...skills, newSkill.trim()]);
+      setNewSkill('');
+    }
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col font-sans">
-      <Navbar />
+    <div className="min-h-screen bg-slate-50 flex flex-col font-sans print:bg-white print:p-0">
+      <div className="print:hidden">
+        <Navbar />
+      </div>
 
-      <main className="flex-1 pt-28 pb-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <main className="flex-1 pt-28 pb-20 print:p-0 print:m-0">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 print:max-w-none print:p-0 print:m-0">
           
           {/* Header Banner */}
-          <div className="bg-[#0A1428] text-white rounded-3xl p-8 border border-slate-800 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div className="bg-[#0A1428] text-white rounded-3xl p-8 border border-slate-800 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6 print:hidden">
             <div className="space-y-2">
               <div className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-400 uppercase tracking-wider bg-slate-900 px-3 py-1 rounded-full border border-slate-800">
                 <Sparkles className="w-3.5 h-3.5" /> AI Resume Studio
@@ -137,10 +167,10 @@ export default function ResumeBuilderPage() {
           </div>
 
           {/* Builder Layout: Form Left (5 cols) | Live Preview Right (7 cols) */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start print:block">
             
             {/* Left: Input Form Controls */}
-            <div className="lg:col-span-5 space-y-6">
+            <div className="lg:col-span-5 space-y-6 print:hidden">
               
               {/* Customization Toolbar */}
               <div className="bg-white rounded-2xl p-5 border border-slate-200 shadow-xs space-y-4">
@@ -227,6 +257,21 @@ export default function ResumeBuilderPage() {
                 <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
                   <Code className="w-4 h-4 text-amber-500" /> Technical Skills
                 </h3>
+                <form onSubmit={handleAddSkill} className="flex gap-2">
+                  <input
+                    type="text"
+                    value={newSkill}
+                    onChange={(e) => setNewSkill(e.target.value)}
+                    placeholder="Add skill (e.g. Python, Docker)..."
+                    className="flex-1 p-2 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500/20"
+                  />
+                  <button
+                    type="submit"
+                    className="bg-[#0A1428] text-white px-3 py-2 rounded-lg text-xs font-bold hover:bg-[#0F1D38]"
+                  >
+                    Add
+                  </button>
+                </form>
                 <div className="flex flex-wrap gap-2">
                   {skills.map((s, i) => (
                     <span key={i} className="text-xs bg-slate-100 font-semibold text-slate-800 px-3 py-1 rounded-md flex items-center gap-1">
@@ -242,11 +287,64 @@ export default function ResumeBuilderPage() {
                 </div>
               </div>
 
+              {/* Experience / Internships */}
+              <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs space-y-4">
+                <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+                  <Briefcase className="w-4 h-4 text-amber-500" /> Work Experience / Internships
+                </h3>
+                {experience.map((exp, idx) => (
+                  <div key={idx} className="p-3 bg-slate-50 rounded-xl border border-slate-100 text-xs space-y-1">
+                    <div className="flex justify-between items-center font-bold text-slate-900">
+                      <span>{exp.role}</span>
+                      <button 
+                        onClick={() => setExperience(experience.filter((_, i) => i !== idx))}
+                        className="text-slate-400 hover:text-red-500 text-xs font-normal"
+                      >
+                        Remove
+                      </button>
+                    </div>
+                    <div className="text-slate-500">{exp.company} • {exp.duration}</div>
+                    <p className="text-slate-600 mt-1">{exp.description}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Certifications & Achievements */}
+              <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs space-y-4">
+                <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+                  <Award className="w-4 h-4 text-amber-500" /> Certifications & Achievements
+                </h3>
+                <div className="space-y-2 text-xs">
+                  {certifications.map((c, i) => (
+                    <div key={i} className="flex items-center justify-between p-2 bg-slate-50 rounded-lg border border-slate-100">
+                      <span className="font-medium text-slate-800">{c}</span>
+                      <button 
+                        onClick={() => setCertifications(certifications.filter((_, idx) => idx !== i))}
+                        className="text-slate-400 hover:text-red-500"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  ))}
+                  {achievements.map((a, i) => (
+                    <div key={i} className="flex items-center justify-between p-2 bg-slate-50 rounded-lg border border-slate-100">
+                      <span className="font-medium text-slate-800">{a}</span>
+                      <button 
+                        onClick={() => setAchievements(achievements.filter((_, idx) => idx !== i))}
+                        className="text-slate-400 hover:text-red-500"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
             </div>
 
             {/* Right: Live Resume A4 Preview Container */}
-            <div className="lg:col-span-7 sticky top-28">
-              <div className="bg-white rounded-2xl border border-slate-300 p-8 sm:p-12 shadow-2xl space-y-6 text-slate-900 min-h-[750px] relative">
+            <div className="lg:col-span-7 sticky top-28 print:static print:col-span-12 print:m-0 print:p-0">
+              <div id="printable-resume" className="bg-white rounded-2xl border border-slate-300 p-8 sm:p-12 shadow-2xl space-y-6 text-slate-900 min-h-[750px] relative print:shadow-none print:border-none print:p-0 print:m-0">
                 
                 {/* Resume Header */}
                 <div className={`pb-6 ${activeTemplate === 'modern' ? 'border-b-2 border-slate-900' : 'border-b border-slate-200'}`}>
@@ -283,12 +381,32 @@ export default function ResumeBuilderPage() {
                   ))}
                 </div>
 
+                {/* Section: Experience */}
+                {experience.length > 0 && (
+                  <div className="space-y-3">
+                    <h2 className="text-xs font-extrabold uppercase tracking-wider text-slate-900 border-b border-slate-200 pb-1">
+                      Internship & Work Experience
+                    </h2>
+                    {experience.map((exp, idx) => (
+                      <div key={idx} className="space-y-1 text-xs">
+                        <div className="flex justify-between items-center font-bold text-slate-900">
+                          <span>{exp.role} <span className="font-normal text-slate-500">({exp.company})</span></span>
+                          <span className="text-slate-500 font-medium">{exp.duration}</span>
+                        </div>
+                        <p className="text-slate-700 leading-relaxed pl-2 border-l-2 border-slate-200">
+                          {exp.description}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
                 {/* Section: Projects & Proof of Work */}
                 <div className="space-y-4">
                   <h2 className="text-xs font-extrabold uppercase tracking-wider text-slate-900 border-b border-slate-200 pb-1 flex items-center justify-between">
                     <span>Projects & Verified Proof of Work</span>
                     {aiEnhanced && (
-                      <span className="text-[9px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded">
+                      <span className="text-[9px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded print:hidden">
                         AI Impact Enhanced
                       </span>
                     )}
@@ -317,8 +435,25 @@ export default function ResumeBuilderPage() {
                   </div>
                 </div>
 
+                {/* Section: Certifications & Achievements */}
+                {(certifications.length > 0 || achievements.length > 0) && (
+                  <div className="space-y-2">
+                    <h2 className="text-xs font-extrabold uppercase tracking-wider text-slate-900 border-b border-slate-200 pb-1">
+                      Certifications & Key Achievements
+                    </h2>
+                    <div className="text-xs font-medium text-slate-800 space-y-1">
+                      {certifications.map((c, i) => (
+                        <div key={i}>• {c}</div>
+                      ))}
+                      {achievements.map((a, i) => (
+                        <div key={i}>• {a}</div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
                 {/* Bottom Watermark */}
-                <div className="pt-8 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-400 font-medium">
+                <div className="pt-8 border-t border-slate-100 flex items-center justify-between text-[10px] text-slate-400 font-medium print:hidden">
                   <span>PehlaChance Verified Profile Resume</span>
                   <span>ATS Score: 96%</span>
                 </div>
@@ -331,7 +466,9 @@ export default function ResumeBuilderPage() {
         </div>
       </main>
 
-      <Footer />
+      <div className="print:hidden">
+        <Footer />
+      </div>
     </div>
   );
 }
